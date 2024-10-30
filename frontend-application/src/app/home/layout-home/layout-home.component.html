@@ -1,0 +1,277 @@
+<!-- Header START -->
+<!-- Header START -->
+<header class="navbar-light header-static navbar-sticky me-5">
+  <!-- Logo Nav START -->
+  <nav class="navbar navbar-expand-xl">
+    <div class="container">
+      <!-- Logo START -->
+      <a class="navbar-brand me-0" href="index.html">
+        <img
+          style="border-radius: 50px"
+          class="light-mode-item navbar-brand-item"
+          src="assets/images/santé.jpg"
+          alt="logo"
+        />
+        <img
+          class="dark-mode-item navbar-brand-item"
+          src="assets/images/logoLib.jpeg"
+          alt="logo"
+        />
+      </a>
+      <!-- Logo END -->
+
+      <!-- Responsive navbar toggler -->
+      <button
+        class="navbar-toggler ms-auto"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-animation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <!-- Main navbar START -->
+      <div class="navbar-collapse collapse me-5" id="navbarCollapse">
+        <!-- Boutons positionnés en bas à droite -->
+        <div class="position-absolute bottom-0 end-0 mb-3 me-3">
+          <!-- Bouton Se Connecter -->
+          <button class="btn btn-danger-soft me-2" routerLink="/signup">
+            <i class="fas fa-sign-in-alt me-2"></i>S'inscrire
+          </button>
+          <!-- Bouton Login -->
+          <button class="btn btn-primary" routerLink="/signin">
+            <i class="fas fa-user me-2"></i>Se Connecter
+          </button>
+        </div>
+      </div>
+
+      <!-- Profile START -->
+    </div>
+  </nav>
+</header>
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+  <!-- =======================
+Main Banner START -->
+  <section
+    class="pt-0 position-relative overflow-hidden h-700px h-sm-600px h-lg-700px rounded-top-4 mx-2 mx-md-4"
+    style="
+      background-image: url(assets/images/santé.jpg);
+      background-position: center;
+      background-size: cover;
+    "
+  >
+    <div class="bg-overlay bg-dark opacity-5"></div>
+    <!-- SVG decoration for curve -->
+    <figure
+      class="position-absolute bottom-0 left-0 w-100 d-md-block mb-n3 z-index-9"
+    >
+      <svg
+        class="fill-body"
+        width="100%"
+        height="150"
+        viewBox="0 0 500 150"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,150 L0,40 Q250,150 500,40 L580,150 Z"></path>
+      </svg>
+    </figure>
+    <!-- SVG decoration -->
+    <figure
+      class="position-absolute top-0 start-50 translate-middle-x z-index-9 mt-5"
+    >
+      <svg width="29px" height="29px">
+        <path
+          class="fill-orange"
+          d="M29.004,14.502 C29.004,22.512 22.511,29.004 14.502,29.004 C6.492,29.004 -0.001,22.512 -0.001,14.502 C-0.001,6.492 6.492,-0.001 14.502,-0.001 C22.511,-0.001 29.004,6.492 29.004,14.502 Z"
+        ></path>
+      </svg>
+    </figure>
+
+    <div class="container z-index-9 position-relative">
+      <!-- SVG decoration -->
+      <figure class="position-absolute bottom-0 end-0 z-index-9 ms-5 mb-5">
+        <svg width="23px" height="23px">
+          <path
+            class="fill-primary"
+            d="M23.003,11.501 C23.003,17.854 17.853,23.003 11.501,23.003 C5.149,23.003 -0.001,17.854 -0.001,11.501 C-0.001,5.149 5.149,-0.000 11.501,-0.000 C17.853,-0.000 23.003,5.149 23.003,11.501 Z"
+          ></path>
+        </svg>
+      </figure>
+
+      <div
+        class="row py-0 py-md-5 align-items-center text-center text-sm-start"
+      >
+        <div class="col-sm-10 col-md-8 all-text-white my-5 mt-md-0">
+          <div class="py-0 py-md-5 my-5">
+            <!-- Badge with content -->
+            <div class="d-inline-block bg-white px-3 py-2 rounded-pill mb-3">
+                <p class="mb-0 text-dark">
+                    <span class="badge text-bg-success rounded-pill me-1">Nouveau</span>
+                    Apprenez avec les meilleurs professionnels de la santé
+                </p>
+            </div>
+        
+            <!-- Title -->
+            <h1 class="text-white display-5">
+                Commencez
+                <span class="text-warning"> à gérer vos informations médicales</span>
+            </h1>       
+            <div class="d-sm-flex align-items-center mt-4">
+                <!-- Button -->
+                <a href="#" class="btn btn-primary me-2 mb-4 mb-sm-0">Commencez maintenant</a>
+                <!-- Video button -->
+            </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row g-4 align-items-center">
+          <div class="col-lg-5">
+              <img
+                  src="assets/images/test.jpg"
+                  class="w-100 img-fluid rounded-2"
+                  alt="Ressources médicales"
+              />
+          </div>
+          <div class="col-lg-7">
+              <div class="row g-4">
+                  <!-- Item -->
+                  <div class="col-sm-6">
+                      <div class="icon-lg bg-success bg-opacity-10 text-success rounded-2">
+                          <i class="bi bi-alarm-fill fs-5"></i>
+                      </div>
+                      <h5 class="mt-2">Apprentissage Flexible</h5>
+                      <p class="mb-0">
+                          Bénéficiez d'un accès facile à une multitude de ressources médicales, à votre rythme. Que vous souhaitiez lire, écouter ou regarder, notre bibliothèque s'adapte à vos besoins d'apprentissage.
+                      </p>
+                  </div>
+                  <!-- Item -->
+                  <div class="col-sm-6">
+                      <div class="icon-lg bg-purple bg-opacity-10 text-purple rounded-2">
+                          <i class="fas fa-university fs-5"></i>
+                      </div>
+                      <h5 class="mt-2">Normes de Qualité</h5>
+                      <p class="mb-0">
+                          Nous nous engageons à respecter des normes élevées dans la sélection de nos ressources médicales. Chaque livre, article et matériel est choisi pour garantir une expérience d'apprentissage enrichissante et pertinente pour la santé.
+                      </p>
+                  </div>
+                  <!-- Item -->
+                  <div class="col-sm-6">
+                      <div class="icon-lg bg-warning bg-opacity-10 text-warning rounded-2">
+                          <i class="fas fa-stethoscope fs-5"></i>
+                      </div>
+                      <h5 class="mt-2">Facilitez le Diagnostic</h5>
+                      <p class="mb-0">
+                          Notre système permet aux médecins de détecter rapidement les maladies en s'appuyant sur les symptômes fournis par les patients. Cela améliore la qualité des soins et réduit le temps d'attente pour un diagnostic précis.
+                      </p>
+                  </div>
+                  <!-- Item -->
+                  <div class="col-sm-6">
+                      <div class="icon-lg bg-secondary bg-opacity-10 text-secondary rounded-2">
+                          <i class="fas fa-heartbeat fs-5"></i>
+                      </div>
+                      <h5 class="mt-2">Avantages pour les Patients</h5>
+                      <p class="mb-0">
+                          Les patients bénéficient d'une interface conviviale pour partager leurs symptômes, ce qui facilite la communication avec les médecins et permet un suivi plus efficace de leur état de santé.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>  
+  </section>
+  <section class="mb-n9 position-relative z-index-9">
+    <div class="container">
+      <div class="row">
+        <div class="col-11 col-md-10 mx-auto">
+          <div
+            class="bg-warning rounded-3 shadow p-3 p-sm-4 position-relative overflow-hidden"
+          >
+            <!-- SVG decoration -->
+            <figure
+              class="position-absolute top-100 start-100 translate-middle mt-n6 ms-n5"
+            >
+              <svg width="211px" height="211px">
+                <path
+                  class="fill-white opacity-4"
+                  d="M210.030,105.011 C210.030,163.014 163.010,210.029 105.012,210.029 C47.013,210.029 -0.005,163.014 -0.005,105.011 C-0.005,47.015 47.013,-0.004 105.012,-0.004 C163.010,-0.004 210.030,47.015 210.030,105.011 Z"
+                ></path>
+              </svg>
+            </figure>
+            <!-- SVG decoration -->
+            <figure
+              class="position-absolute top-100 start-0 translate-middle mt-n6 ms-5"
+            >
+              <svg width="141px" height="141px">
+                <path
+                  class="fill-white opacity-4"
+                  d="M140.520,70.258 C140.520,109.064 109.062,140.519 70.258,140.519 C31.454,140.519 -0.004,109.064 -0.004,70.258 C-0.004,31.455 31.454,-0.003 70.258,-0.003 C109.062,-0.003 140.520,31.455 140.520,70.258 Z"
+                ></path>
+              </svg>
+            </figure>
+            <!-- SVG decoration -->
+            <figure class="position-absolute top-0 start-50 mt-4 ms-n9">
+              <svg width="41px" height="41px">
+                <path
+                  class="fill-white opacity-4"
+                  d="M40.531,20.265 C40.531,31.458 31.457,40.531 20.265,40.531 C9.072,40.531 -0.001,31.458 -0.001,20.265 C-0.001,9.073 9.072,-0.001 20.265,-0.001 C31.457,-0.001 40.531,9.073 40.531,20.265 Z"
+                ></path>
+              </svg>
+            </figure>
+
+            <div class="row">
+              <div class="col-md-8 mx-auto text-center py-5 position-relative">
+                <!-- Title -->
+                <h2>Subscribe to our Newsletter for Newest book Updates</h2>
+                <!-- Form -->
+                <form
+                  class="row align-items-center justify-content-center mt-3"
+                >
+                  <div class="col-lg-8">
+                    <div class="bg-body shadow rounded-pill p-2">
+                      <div class="input-group">
+                        <input
+                          class="form-control border-0 me-1"
+                          type="email"
+                          placeholder="Enter your email"
+                        />
+                        <button
+                          type="button"
+                          class="btn btn-blue mb-0 rounded-pill"
+                        >
+                          Subscribe!
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- Row END -->
+          </div>
+        </div>
+      </div>
+      <!-- Row END -->
+    </div>
+  </section>
+</main>
+
+<div class="back-top">
+  <i
+    class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"
+  ></i>
+</div>

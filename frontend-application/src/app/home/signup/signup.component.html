@@ -1,0 +1,362 @@
+<section class="vh-xxl-100">
+  <div class="container-fluid">
+    <div *ngIf="isLoading" class="spinner-overlay">
+      <div class="spinner"></div>
+    </div>
+  </div>
+  <div class="h-100 d-flex px-0 px-sm-4">
+    <div class="row justify-content-center align-items-center m-auto">
+      <div class="col-12">
+        <div class="bg-mode shadow rounded-3 overflow-hidden">
+          <div class="row g-0">
+            <!-- Vector Image -->
+            <div
+              class="col-lg-6 d-md-flex align-items-center order-2 order-lg-1"
+            >
+              <div class="p-3 p-lg-5">
+                <img src="assets/images/element/signin.svg" alt="" />
+              </div>
+              <!-- Divider -->
+              <div class="vr opacity-1 d-none d-lg-block"></div>
+            </div>
+
+            <!-- Information -->
+            <div class="col-lg-6 order-1">
+              <div class="p-4 p-sm-6">
+                <!-- Logo -->
+                <a>
+                  <img
+                    class="h-50px mb-4"
+                    src="assets/images/santé.jpg"
+                    style="border-radius: 50px"
+                    alt="logo"
+                  />
+                </a>
+                <!-- Title -->
+                <h1 class="mb-2 h3">Create new account</h1>
+                <p class="mb-0">
+                  Already a member?<a href="/signin"> Log in</a>
+                </p>
+
+                <!-- Form START -->
+                <form
+                  [formGroup]="registerForm"
+                  (ngSubmit)="register()"
+                  class="mt-4 text-start"
+                >
+                  <div class="row">
+                    <!-- Nom -->
+                    <div class="col-12 col-md-6 mb-3">
+                      <label class="form-label">Nom</label>
+                      <div class="input-group input-group-lg">
+                        <input
+                          formControlName="nom"
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter your last name"
+                        />
+                        <span class="input-group-text">
+                          <i class="fas fa-user-graduate"></i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="
+                          registerForm.get('nom')?.invalid &&
+                          (registerForm.get('nom')?.dirty ||
+                            registerForm.get('nom')?.touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('nom')?.errors?.['required']"
+                        >
+                          Le nom est requis.
+                        </small>
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('nom')?.errors?.['minlength']"
+                        >
+                          Le nom doit comporter au moins 3 caractères.
+                        </small>
+                      </div>
+                    </div>
+
+                    <!-- Prenom -->
+                    <div class="col-12 col-md-6 mb-3">
+                      <label class="form-label">Prenom</label>
+                      <div class="input-group input-group-lg">
+                        <input
+                          formControlName="prenom"
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter your first name"
+                        />
+                        <span class="input-group-text">
+                          <i class="fas fa-user-graduate"></i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="
+                          registerForm.get('prenom')?.invalid &&
+                          (registerForm.get('prenom')?.dirty ||
+                            registerForm.get('prenom')?.touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('prenom')?.errors?.['required']"
+                        >
+                          Le prénom est requis.
+                        </small>
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('prenom')?.errors?.['minlength']"
+                        >
+                          Le prénom doit comporter au moins 3 caractères.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <!-- Numero de Telephone -->
+                    <div class="col-12 col-md-6 mb-3">
+                      <label class="form-label">Numero de Telephone</label>
+                      <div class="input-group input-group-lg">
+                        <input
+                          formControlName="numeroTelephone"
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter your phone number"
+                        />
+                        <span class="input-group-text">
+                          <i class="fas fa-phone"></i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="
+                          registerForm.get('numeroTelephone')?.invalid &&
+                          (registerForm.get('numeroTelephone')?.dirty ||
+                            registerForm.get('numeroTelephone')?.touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('numeroTelephone')?.errors?.['required']"
+                        >
+                          Le numéro de téléphone est requis.
+                        </small>
+                      </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-12 col-md-6 mb-3">
+                      <label class="form-label">Email</label>
+                      <div class="input-group input-group-lg">
+                        <input
+                          formControlName="email"
+                          type="email"
+                          class="form-control"
+                          placeholder="Enter your email"
+                        />
+                        <span class="input-group-text">
+                          <i class="fas fa-envelope"></i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="
+                          registerForm.get('email')?.invalid &&
+                          (registerForm.get('email')?.dirty ||
+                            registerForm.get('email')?.touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('email')?.errors?.['required']"
+                        >
+                          L'email est requis.
+                        </small>
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('email')?.errors?.['email']"
+                        >
+                          L'email doit être valide.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Image -->
+                  <div class="mb-3">
+                    <label class="form-label">Image</label>
+                    <div class="input-group input-group-lg">
+                      <input
+                        type="file"
+                        class="form-control"
+                        (change)="onFileSelected($event)"
+                      />
+                      <span class="input-group-text">
+                        <i class="fas fa-image"></i>
+                      </span>
+                    </div>
+                    <div
+                      *ngIf="
+                        registerForm.get('image')?.invalid &&
+                        (registerForm.get('image')?.dirty ||
+                          registerForm.get('image')?.touched)
+                      "
+                    >
+                      <small
+                        class="text-danger"
+                        *ngIf="registerForm.get('image')?.errors?.['required']"
+                      >
+                        L'image est requise.
+                      </small>
+                    </div>
+                  </div>
+
+                  <!-- Date de Naissance -->
+                  <div class="row">
+                    <div class="mb-3 col-12 col-md-6">
+                      <label class="form-label">Date de Naissance</label>
+                      <div class="input-group input-group-lg">
+                        <input
+                          formControlName="dateNaissance"
+                          type="date"
+                          class="form-control"
+                        />
+                        <span class="input-group-text">
+                          <i class="fas fa-calendar"></i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="
+                          registerForm.get('dateNaissance')?.invalid &&
+                          (registerForm.get('dateNaissance')?.dirty ||
+                            registerForm.get('dateNaissance')?.touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('dateNaissance')?.errors?.['required']"
+                        >
+                          La date de naissance est requise.
+                        </small>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                      <label class="form-label">Cin</label>
+                      <div class="input-group input-group-lg">
+                        <input
+                          formControlName="cin"
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter your last cin"
+                        />
+                        <span class="input-group-text">
+                          <i class="fas fa-id-card"></i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="
+                          registerForm.get('cin')?.invalid &&
+                          (registerForm.get('cin')?.dirty ||
+                            registerForm.get('cin')?.touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('cin')?.errors?.['required']"
+                        >
+                          La carte identité nationale est requis.
+                        </small>
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('cin')?.errors?.['minlength']"
+                        >
+                          Le cin doit comporter au moins 6 caractères.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <!-- Password -->
+                    <div class="col-12 col-md-6 mb-3">
+                      <label class="form-label">Password</label>
+                      <div class="input-group input-group-lg">
+                        <input
+                          formControlName="password"
+                          [type]="passwordFieldType"
+                          class="form-control"
+                          placeholder="Enter your password"
+                        />
+                        <span
+                          class="input-group-text"
+                          (click)="togglePasswordVisibility()"
+                        >
+                          <i class="fas fa-lock"></i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="
+                          registerForm.get('password')?.invalid &&
+                          (registerForm.get('password')?.dirty ||
+                            registerForm.get('password')?.touched)
+                        "
+                      >
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('password')?.errors?.['required']"
+                        >
+                          Le mot de passe est requis.
+                        </small>
+                        <small
+                          class="text-danger"
+                          *ngIf="registerForm.get('password')?.errors?.['minlength']"
+                        >
+                          Le mot de passe doit comporter au moins 4 caractères.
+                        </small>
+                      </div>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="col-12 col-md-6 mb-3">
+                      <label class="form-label">Confirm Password</label>
+                      <div class="input-group input-group-lg">
+                        <input
+                          formControlName="confirmPassword"
+                          [type]="passwordFieldType"
+                          class="form-control"
+                          placeholder="Confirm your password"
+                        />
+                        <span class="input-group-text">
+                          <i class="fas fa-lock"></i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="registerForm.errors?.['passwordsMismatch'] && (registerForm.get('confirmPassword')?.dirty || registerForm.get('confirmPassword')?.touched)"
+                      >
+                        <small class="text-danger"
+                          >Les mots de passe ne correspondent pas.</small
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button type="submit" class="btn btn-primary w-100 mb-0">
+                      Sign up
+                    </button>
+                  </div>
+                </form>
+
+                <!-- Form END -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
