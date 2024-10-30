@@ -1,0 +1,905 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY untitled-ontology-12 "http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#"
+     xml:base="http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-12="http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#aConsulté -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;aConsulté">
+        <rdfs:range rdf:resource="&untitled-ontology-12;Médecin"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#aDescription -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;aDescription">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Symptôme"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;aDescription"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#aTraitement -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;aTraitement">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#doitConsulter -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;doitConsulter">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Médecin"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#estDiagnostiquéPar -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;estDiagnostiquéPar">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Médecin"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#estPrescritPour -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;estPrescritPour">
+        <rdfs:range rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#estPrésentChez -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;estPrésentChez">
+        <rdfs:range rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#estRecommandéPour -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;estRecommandéPour">
+        <rdfs:range rdf:resource="&untitled-ontology-12;Symptôme"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Tip"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#estTraitéeAvec -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;estTraitéeAvec">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Symptôme"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#faitPartieDuTraitement -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;faitPartieDuTraitement">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Tip"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#prescritTraitement -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;prescritTraitement">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Médecin"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#provoque -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;provoque">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#présenteSymptôme -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;présenteSymptôme">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#reçoitTraitement -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;reçoitTraitement">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#AntécédentsMédicaux -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;AntécédentsMédicaux">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Cible -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Cible">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Tip"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Code_CIM -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Code_CIM">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Dosage -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Dosage">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Médicament"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Durée -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Durée">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Physique"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Durée_Hospitalisation -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Durée_Hospitalisation">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Chirurgie"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#EffetsSecondaires -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;EffetsSecondaires">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Médicament"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Fréquence -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Fréquence">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Psychologique"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Gravité -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Gravité">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Intensité -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Intensité">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Physique"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Localisation -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Localisation">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Physique"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#NiveauImpact -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;NiveauImpact">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Psychologique"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Nom -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Nom">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Médecin"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Symptôme"/>
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Traitement"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#NomMaladie -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;NomMaladie">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Nom_Médicament -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Nom_Médicament">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Médicament"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Specialité -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Specialité">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Médecin"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#TypeTrouble -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;TypeTrouble">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Psychologique"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Type_Chirurgie -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Type_Chirurgie">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Chirurgie"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#aDescription -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;aDescription">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#age -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;age">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#dateDiagnostic -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;dateDiagnostic">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#historiqueMedical -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;historiqueMedical">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#niveauDouleur -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;niveauDouleur">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#poids -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;poids">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#sexe -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;sexe">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#symptômes -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;symptômes">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Symptôme"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#traitement -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;traitement">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Traitement"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Adulte -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Adulte">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Patient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Cardiaque -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Cardiaque">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Cardiovasculaire -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Cardiovasculaire">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Maladie"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Chirurgie -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Chirurgie">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Chronique -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Chronique">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Maladie"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Conseil_Hygiénique -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Conseil_Hygiénique">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Tip"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Conseil_Nutritionnel -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Conseil_Nutritionnel">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Tip"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Conseil_Psychologique -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Conseil_Psychologique">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Tip"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Enfant -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Enfant">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Patient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Generaliste -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Generaliste">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Médecin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Génétique -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Génétique">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Maladie"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Infectieuse -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Infectieuse">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Maladie"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Maladie -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Maladie">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;estTraitéeAvec"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Traitement"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;estDiagnostiquéPar"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Médecin"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Médecin -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Médecin">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;doitConsulter"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Patient"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;prescritTraitement"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Traitement"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Médicament -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Médicament">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Patient -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Patient">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;reçoitTraitement"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Traitement"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;présenteSymptôme"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Symptôme"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Personne_Âgée -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Personne_Âgée">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Patient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Physique -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Physique">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Psychologique -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Psychologique">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Respiratoire -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Respiratoire">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Specialiste -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Specialiste">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Médecin"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Symptôme -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Symptôme">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;provoque"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Maladie"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;estPrésentChez"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Patient"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Thérapie -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Thérapie">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Tip -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Tip">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;faitPartieDuTraitement"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Traitement"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;estRecommandéPour"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Symptôme"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Traitement -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Traitement">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;estPrescritPour"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Maladie"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Traitement_Préventif -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Traitement_Préventif">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Aldosterone_antagonists -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;Aldosterone_antagonists">
+        <rdf:type rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Angiotensin_receptor_blockers -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;Angiotensin_receptor_blockers">
+        <rdf:type rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Beta-blockers -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;Beta-blockers">
+        <rdf:type rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#DiabèteType1 -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;DiabèteType1">
+        <rdf:type rdf:resource="&untitled-ontology-12;Maladie"/>
+        <aDescription>Autoimmune condition causing destruction of insulin-producing cells in pancreas</aDescription>
+        <provoque rdf:resource="&untitled-ontology-12;Fatigue"/>
+        <aTraitement rdf:resource="&untitled-ontology-12;InsulinTherapy"/>
+        <doitConsulter rdf:resource="&untitled-ontology-12;MédecinDiabete"/>
+        <provoque rdf:resource="&untitled-ontology-12;Soif_accrue"/>
+        <provoque rdf:resource="&untitled-ontology-12;faim_extrême"/>
+        <provoque rdf:resource="&untitled-ontology-12;irritabilité"/>
+        <provoque rdf:resource="&untitled-ontology-12;miction_fréquente"/>
+        <aTraitement rdf:resource="&untitled-ontology-12;médicaments_oraux"/>
+        <provoque rdf:resource="&untitled-ontology-12;perte_de_poids"/>
+        <aTraitement rdf:resource="&untitled-ontology-12;surveillance_de_la_glycémie"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Diuretics -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;Diuretics">
+        <rdf:type rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Fatigue -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;Fatigue">
+        <rdf:type rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Heart_Failure -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;Heart_Failure">
+        <rdf:type rdf:resource="&untitled-ontology-12;Maladie"/>
+        <aDescription>Inability of the heart to pump blood effectively</aDescription>
+        <aTraitement rdf:resource="&untitled-ontology-12;Aldosterone_antagonists"/>
+        <aTraitement rdf:resource="&untitled-ontology-12;Angiotensin_receptor_blockers"/>
+        <aTraitement rdf:resource="&untitled-ontology-12;Beta-blockers"/>
+        <aTraitement rdf:resource="&untitled-ontology-12;Diuretics"/>
+        <provoque rdf:resource="&untitled-ontology-12;Fatigue"/>
+        <provoque rdf:resource="&untitled-ontology-12;Rapid_or_irregular_heartbeat"/>
+        <provoque rdf:resource="&untitled-ontology-12;Swelling_(edema)_in_legs"/>
+        <provoque rdf:resource="&untitled-ontology-12;ankles"/>
+        <doitConsulter rdf:resource="&untitled-ontology-12;cardiologue"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#InsulinTherapy -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;InsulinTherapy">
+        <rdf:type rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#MédecinDiabete -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;MédecinDiabete">
+        <rdf:type rdf:resource="&untitled-ontology-12;Médecin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Rapid_or_irregular_heartbeat -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;Rapid_or_irregular_heartbeat">
+        <rdf:type rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Soif_accrue -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;Soif_accrue">
+        <rdf:type rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Swelling_(edema)_in_legs -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;Swelling_(edema)_in_legs">
+        <rdf:type rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#ankles -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;ankles">
+        <rdf:type rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#cardiologue -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;cardiologue">
+        <rdf:type rdf:resource="&untitled-ontology-12;Médecin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#faim_extrême -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;faim_extrême"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#irritabilité -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;irritabilité">
+        <rdf:type rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#miction_fréquente -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;miction_fréquente">
+        <rdf:type rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#médicaments_oraux -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;médicaments_oraux">
+        <rdf:type rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#perte_de_poids -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;perte_de_poids"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#surveillance_de_la_glycémie -->
+
+    <owl:NamedIndividual rdf:about="&untitled-ontology-12;surveillance_de_la_glycémie">
+        <rdf:type rdf:resource="&untitled-ontology-12;Traitement"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
