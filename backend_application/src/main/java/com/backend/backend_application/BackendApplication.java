@@ -72,5 +72,4 @@ public class BackendApplication implements CommandLineRunner {
             System.out.println("Erreur lors de l'exécution : " + e.getMessage());
         }
     }
-
 }
