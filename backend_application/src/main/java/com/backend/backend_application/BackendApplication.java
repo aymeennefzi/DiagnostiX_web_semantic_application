@@ -48,6 +48,7 @@ public class BackendApplication implements CommandLineRunner {
             admin.setPassword(new BCryptPasswordEncoder().encode("admin"));
             adminRepository.save(admin);
         }
+        loadRdfFile();
     }
 
     private void loadRdfFile() {
@@ -71,5 +72,4 @@ public class BackendApplication implements CommandLineRunner {
             System.out.println("Erreur lors de l'exécution : " + e.getMessage());
         }
     }
-
 }
