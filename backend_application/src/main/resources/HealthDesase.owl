@@ -129,6 +129,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#hasSymptom -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;hasSymptom">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Allergy"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Symptôme"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#managedBy -->
+
+    <owl:ObjectProperty rdf:about="&untitled-ontology-12;managedBy">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Allergy"/>
+        <rdfs:range rdf:resource="&untitled-ontology-12;Médecin"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#prescritTraitement -->
 
     <owl:ObjectProperty rdf:about="&untitled-ontology-12;prescritTraitement">
@@ -176,10 +194,27 @@
     
 
 
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Allergen_Name -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Allergen_Name">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Allergy"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#AntécédentsMédicaux -->
 
     <owl:DatatypeProperty rdf:about="&untitled-ontology-12;AntécédentsMédicaux">
         <rdfs:domain rdf:resource="&untitled-ontology-12;Patient"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Auteur -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Auteur">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Médecin"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -198,6 +233,33 @@
 
     <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Code_CIM">
         <rdfs:domain rdf:resource="&untitled-ontology-12;Maladie"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Date_de_publication -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Date_de_publication">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Tip"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Description -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Description">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Tip"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#DescriptionT -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;DescriptionT">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Traitement"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
@@ -266,9 +328,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Last_Occurrence -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Last_Occurrence"/>
+    
+
+
     <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Localisation -->
 
     <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Localisation">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Médecin"/>
         <rdfs:domain rdf:resource="&untitled-ontology-12;Physique"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -315,9 +384,27 @@
     
 
 
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Severity_Level -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Severity_Level">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Allergy"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Specialité -->
 
     <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Specialité">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Médecin"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Telephone -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;Telephone">
         <rdfs:domain rdf:resource="&untitled-ontology-12;Médecin"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
@@ -413,12 +500,29 @@
     
 
 
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#titre -->
+
+    <owl:DatatypeProperty rdf:about="&untitled-ontology-12;titre">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Tip"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#traitement -->
 
     <owl:DatatypeProperty rdf:about="&untitled-ontology-12;traitement">
         <rdfs:domain rdf:resource="&untitled-ontology-12;Traitement"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topDataProperty -->
+
+    <rdf:Description rdf:about="&owl;topDataProperty">
+        <rdfs:domain rdf:resource="&untitled-ontology-12;Allergy"/>
+    </rdf:Description>
     
 
 
@@ -437,6 +541,20 @@
 
     <owl:Class rdf:about="&untitled-ontology-12;Adulte">
         <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Patient"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Allergy -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Allergy">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&untitled-ontology-12;hasSymptom"/>
+                <owl:onClass rdf:resource="&untitled-ontology-12;Symptôme"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -505,6 +623,22 @@
     
 
 
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Environmental_Allergy -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Environmental_Allergy">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Allergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Food_Allergy -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Food_Allergy">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Allergy"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Generaliste -->
 
     <owl:Class rdf:about="&untitled-ontology-12;Generaliste">
@@ -546,6 +680,14 @@
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#Medication_Allergy -->
+
+    <owl:Class rdf:about="&untitled-ontology-12;Medication_Allergy">
+        <rdfs:subClassOf rdf:resource="&untitled-ontology-12;Allergy"/>
     </owl:Class>
     
 
