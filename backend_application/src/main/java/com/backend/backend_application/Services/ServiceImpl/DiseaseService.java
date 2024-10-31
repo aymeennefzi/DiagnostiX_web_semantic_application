@@ -215,5 +215,26 @@ public class DiseaseService {
             return null;
         }
     }
+    public Map<String, Object> isDiseaseNameUnique(String diseaseName) {
+        String sparqlQuery = "PREFIX ont: <http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#> "
+                + "ASK WHERE { "
+                + "    ?disease a ont:Disease ; "
+                + "             ont:Nom \"" + diseaseName + "\" . "
+                + "}";
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("diseaseName", diseaseName);
+
+        try (QueryExecution qexec = QueryExecutionFactory.sparqlService(FUSEKI_URL, sparqlQuery)) {
+            boolean isUnique = !qexec.execAsk();
+            response.put("isUnique", isUnique);
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("isUnique", false);
+            response.put("error", "An error occurred while checking uniqueness.");
+        }
+
+        return response;
+    }
 
 }
