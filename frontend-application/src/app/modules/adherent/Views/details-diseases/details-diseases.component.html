@@ -1,0 +1,10 @@
+<div class="card shadow mt-5" *ngIf="disease">
+    <div class="card-body">
+      <h5 class="card-title">Nom de la maladie: {{ diseaseName }}</h5>
+      <h2 class="card-subtitle mb-2 text-muted">Détails de la maladie</h2>
+      <p class="card-text"><strong>Symptômes:</strong> {{ disease.symptoms}}</p>
+      <p class="card-text"><strong>Description:</strong> {{ disease.description }}</p>
+      <p class="card-text"><strong>Traitements:</strong> {{ disease.treatments}}</p>
+    </div>
+</div>
+  

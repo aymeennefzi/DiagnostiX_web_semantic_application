@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/patients")
+@RequestMapping("/patients") // Base path for all patient-related endpoints
+@CrossOrigin(origins = "http://localhost:4200") // Allow only your frontend domain
 public class PatientController {
 
     @Autowired
@@ -20,7 +21,6 @@ public class PatientController {
     @PostMapping("/add")
     public ResponseEntity<Map<String, Object>> addPatient(@RequestBody PatientDTO patientDTO) {
         return patientService.addPatient(patientDTO);
-
     }
 
     // Endpoint to retrieve all patients

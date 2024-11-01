@@ -1,1 +1,95 @@
-<p>liste-adherent works!</p>
+<section class="pt-4 pt-md-5">
+    <div class="container">
+        <!-- Content and form START -->
+        <div class="row g-4 justify-content-center align-items-center">
+            <div class="col-lg-6">
+                <!-- Title -->
+                <h1>Ajouter votre speciale don</h1>
+
+                <form class="mt-4">
+                    <!-- Nom du don -->
+                    <div class="mb-4 form-control-bg-light">
+                        <label class="form-label">Nom du don</label>
+                        <input type="text" class="form-control" formControlName="nomDon" />
+                        <div>
+                            <small class="text-danger">Le nom du don est requis.</small>
+                        </div>
+                    </div>
+
+                    <!-- Objectif du don -->
+                    <div class="mb-4 form-control-bg-light">
+                        <label class="form-label">Objectif du don</label>
+                        <input type="text" class="form-control" formControlName="objectif" />
+                        <div>
+                            <small class="text-danger">L'objectif est requis.</small>
+                        </div>
+                    </div>
+
+                    <!-- Excedent Alimentaire (Optional Field) -->
+                    <!-- <div class="mb-4 form-control-bg-light">
+              <label class="form-label">Excedent Alimentaire</label>
+              <textarea
+                class="form-control"
+                rows="4"
+                formControlName="excedentAlimentaire"
+              ></textarea>
+              <div
+                *ngIf="
+                  DonForm.get('excedentAlimentaire')?.invalid &&
+                  (DonForm.get('excedentAlimentaire')?.dirty ||
+                    DonForm.get('excedentAlimentaire')?.touched)
+                "
+              >
+                <small class="text-danger"
+                  >Veuillez entrer un message valide.</small
+                >
+              </div>
+            </div> -->
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button class="btn btn-lg btn-primary mb-0" type="submit">
+                            Ajouter Don
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Image -->
+            <div class="col-lg-6 col-xl-5 text-center text-lg-end position-relative ms-auto">
+
+                <!-- Image -->
+                <img src="assets/donatee.jpeg" class="rounded-3 w-100 position-relative" alt="" />
+            </div>
+        </div>
+        <!-- Content and form END -->
+
+        <!-- Social links -->
+        <div class="row g-4 align-items-center mt-5">
+            <div class="col-lg-4">
+                <h5 class="mb-0">Voir les distibutions des don !</h5>
+            </div>
+            <!-- Social links -->
+            <div class="col-lg-8">
+                <ul class="list-inline hstack flex-wrap gap-2 gap-lg-4 justify-content-lg-end h6 mb-0">
+                    <li class="list-inline-item">
+                        <a class="text-facebook" href="#"><i class="fa-brands fa-facebook-square"></i> Facebook</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-instagram-gradient" href="#"><i class="fa-brands fa-instagram-square"></i>
+                            Instagram</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-twitter" href="#"><i class="fa-brands fa-twitter-square"></i> Twitter</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-linkedin" href="#"><i class="fa-brands fa-linkedin"></i> Linkedin</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-whatsapp" href="#"><i class="fa-brands fa-whatsapp-square"></i> WhatsApp</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

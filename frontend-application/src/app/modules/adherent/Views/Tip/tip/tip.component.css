@@ -1,0 +1,10 @@
+/* src/app/modules/adherent/Views/Tip/tip.component.css */
+
+.table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  text-align: center;
+}

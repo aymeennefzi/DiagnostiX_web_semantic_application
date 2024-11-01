@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Manage Tips</h2>
+
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-primary" (click)="openCreateTipModal()">Add Tip</button>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Cible</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tip of tips">
+        <td>{{ tip.titre }}</td>
+        <td>{{ tip.cible }}</td>
+        <td>{{ tip.description }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="openUpdateTipModal(tip)">Update</button>
+          <button class="btn btn-danger btn-sm" (click)="confirmDeleteTip(tip.cible)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -13,6 +13,9 @@ import { NotFoundComponent } from './home/not-found/not-found.component';
 import { VerifyAccoutComponent } from './home/verify-accout/verify-accout.component';
 import { CodeInputModule } from 'angular-code-input';
 import { AllergiesComponent } from './allergies/allergies.component';
+import { PatientService } from './services/patient.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +25,7 @@ import { AllergiesComponent } from './allergies/allergies.component';
     NotFoundComponent,
     VerifyAccoutComponent,
     AllergiesComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,7 @@ import { AllergiesComponent } from './allergies/allergies.component';
     BrowserAnimationsModule,
     CodeInputModule,
   ],
-  providers: [],
+  providers: [PatientService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

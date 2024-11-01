@@ -59,7 +59,7 @@ public class BackendApplication implements CommandLineRunner {
             headers.setContentType(MediaType.valueOf("application/rdf+xml"));
             HttpEntity<byte[]> requestEntity = new HttpEntity<>(fileContent, headers);
 
-            String fusekiUrl = "http://localhost:3030/HealthDesase/data";
+            String fusekiUrl = "http://localhost:3030/HealthDisease/data";
             ResponseEntity<String> response = restTemplate.exchange(fusekiUrl, HttpMethod.POST, requestEntity, String.class);
             if (response.getStatusCode().is2xxSuccessful()) {
                 System.out.println("Fichier chargé avec succès !");
