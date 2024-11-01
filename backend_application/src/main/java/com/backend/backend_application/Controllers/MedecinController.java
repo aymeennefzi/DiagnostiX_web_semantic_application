@@ -12,7 +12,9 @@ import java.util.*;
 
 @AllArgsConstructor
 @RestController
-    @RequestMapping("/medecins")
+@RequestMapping("/medecins")
+@CrossOrigin("*")
+
 public class MedecinController {
     private final MedecinServicesImp medicinService;
 
@@ -20,10 +22,17 @@ public class MedecinController {
 
     @GetMapping("/all")
     public ResponseEntity<Map<String, Object>> getAllMedecins() {
-        Map<String, Object> medecins = medicinService.getAllMedecins();
-        return ResponseEntity.ok(medecins);
-    }
+        Map<String, Object> response = new HashMap<>();
 
+        try {
+            List<Map<String, String>> medecins = medicinService.getAllMedecins(); // Call the updated service method
+            response.put("medecins", medecins);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            response.put("error", "An error occurred while fetching medecins: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
+    }
     @PostMapping("/add")
     public String addMedicin(@RequestBody MedecinDTO medicinDTO) {
         return medicinService.addMedicin(medicinDTO);
@@ -33,7 +42,7 @@ public class MedecinController {
     @PutMapping("update/{name}")
     public ResponseEntity<Map<String, Object>> updateMedicin(
             @PathVariable String name,
-                @RequestBody MedecinDTO medicinDTO) {
+            @RequestBody MedecinDTO medicinDTO) {
 
         Map<String, Object> response = medicinService.updateMedicinByName(name, medicinDTO);
 

@@ -2,6 +2,7 @@ package com.backend.backend_application.Services.ServiceImpl;
 
 
 import com.backend.backend_application.DTO.MedecinDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.jena.query.*;
 import org.apache.jena.update.UpdateExecutionFactory;
 import org.apache.jena.update.UpdateFactory;
@@ -18,35 +19,36 @@ public class MedecinServicesImp {
     private static final String ONTOLOGY_PREFIX = "http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#";
 
 
-    public Map<String, Object> getAllMedecins() {
-        Map<String, Object> result = new HashMap<>();
-        List<Map<String, Object>> bindings = new ArrayList<>();
+    public List<Map<String, String>> getAllMedecins() {
+        List<Map<String, String>> medecinsList = new ArrayList<>();
 
-        String sparqlQuery =
+        String queryString =
                 "PREFIX ont: <http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#> " +
                         "SELECT ?medicin ?name ?specialization ?location WHERE { " +
-                        "  ?medicin a ont:Medecin ; " +
-                        "            ont:nom ?name ; " +
-                        "            ont:specialite ?specialization ; " +
-                        "            ont:localisation ?location . " +
+                        "    ?medicin a ont:Medecin; " +
+                        "             ont:nom ?name; " +
+                        "             ont:specialite ?specialization; " +
+                        "             ont:localisation ?location. " +
                         "}";
 
-        try (QueryExecution qexec = QueryExecutionFactory.sparqlService(FUSEKI_URL, sparqlQuery)) {
-            ResultSet resultSet = qexec.execSelect();
-            while (resultSet.hasNext()) {
-                QuerySolution soln = resultSet.nextSolution();
-                Map<String, Object> binding = new HashMap<>();
-                binding.put("medicin", soln.get("medicin").asResource().getURI());
-                binding.put("name", soln.get("name").asLiteral().getString());
-                binding.put("specialization", soln.get("specialization").asLiteral().getString());
-                binding.put("location", soln.get("location").asLiteral().getString());
+        try (QueryExecution qexec = QueryExecutionFactory.sparqlService(FUSEKI_URL, queryString)) {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext()) {
+                QuerySolution soln = results.nextSolution();
+                Map<String, String> medicinData = new HashMap<>();
 
-                bindings.add(binding);
+                medicinData.put("medicin", soln.getResource("medicin").toString());
+                medicinData.put("name", soln.getLiteral("name").getString());
+                medicinData.put("specialization", soln.getLiteral("specialization").getString());
+                medicinData.put("location", soln.getLiteral("location").getString());
+
+                medecinsList.add(medicinData); // Add the map to the list
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        result.put("results", bindings);
-        return result;
+        return medecinsList; // Return the list of maps
     }
 
     public String addMedicin(MedecinDTO medicinDTO) {
@@ -72,6 +74,24 @@ public class MedecinServicesImp {
         } catch (Exception e) {
             e.printStackTrace();
             return String.format("{\"error\": \"Erreur lors de l'ajout du médecin : %s\"}", e.getMessage());
+        }
+    }
+    public String deleteMedicinByName(String name) {
+        String sparqlDelete = String.format(
+                "PREFIX ont: <%s>\n" +
+                        "DELETE WHERE { ?medicin a ont:Medecin; ont:nom \"%s\"; ?p ?o . }",
+                ONTOLOGY_PREFIX, name
+        );
+
+        try {
+            UpdateRequest updateRequest = UpdateFactory.create(sparqlDelete);
+            UpdateProcessor updateProcessor = UpdateExecutionFactory.createRemote(updateRequest, FUSEKI_UPDATE_URL);
+            updateProcessor.execute();
+
+            return String.format("{\"message\": \"Médecin avec le nom '%s' supprimé avec succès\"}", name);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return String.format("{\"error\": \"Erreur lors de la suppression du médecin : %s\"}", e.getMessage());
         }
     }
 
@@ -114,48 +134,39 @@ public class MedecinServicesImp {
     }
 
 
-
-    public String deleteMedicinByName(String name) {
-        String sparqlDelete = String.format(
-                "PREFIX ont: <%s>\n" +
-                        "DELETE WHERE { ?medicin a ont:Medecin; ont:nom \"%s\"; ?p ?o . }",
-                ONTOLOGY_PREFIX, name
-        );
-
-        try {
-            UpdateRequest updateRequest = UpdateFactory.create(sparqlDelete);
-            UpdateProcessor updateProcessor = UpdateExecutionFactory.createRemote(updateRequest, FUSEKI_UPDATE_URL);
-            updateProcessor.execute();
-
-            return String.format("{\"message\": \"Médecin avec le nom '%s' supprimé avec succès\"}", name);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return String.format("{\"error\": \"Erreur lors de la suppression du médecin : %s\"}", e.getMessage());
-        }
-    }
-
-
     public Map<String, Object> getMedicinByName(String name) {
         String sparqlQuery = String.format(
-                "PREFIX ont: <%s>\n" +
-                        "SELECT ?medicin ?nom ?specialite ?localisation WHERE {\n" +
-                        "    ?medicin a ont:Medecin;\n" +
-                        "             ont:nom \"%s\";\n" +
-                        "             ont:specialite ?specialite;\n" +
-                        "             ont:localisation ?localisation.\n" +
+                "PREFIX ont: <%s> " +
+                        "SELECT ?medicin ?nom ?specialite ?localisation WHERE { " +
+                        "    ?medicin a ont:Medecin; " +
+                        "             ont:nom \"%s\"; " +
+                        "             ont:specialite ?specialite; " +
+                        "             ont:localisation ?localisation. " +
                         "}", ONTOLOGY_PREFIX, name
         );
 
         Map<String, Object> responseMap = new HashMap<>();
 
-        try (QueryExecution queryExecution = QueryExecutionFactory.create(sparqlQuery, DatasetFactory.create(FUSEKI_URL))) {
-            ResultSet results = queryExecution.execSelect();
+        try (QueryExecution qexec = QueryExecutionFactory.sparqlService(FUSEKI_URL, sparqlQuery)) {
+            ResultSet results = qexec.execSelect();
             if (results.hasNext()) {
-                QuerySolution solution = results.next();
+                QuerySolution solution = results.nextSolution();
                 responseMap.put("medicin", solution.getResource("medicin").toString());
-                responseMap.put("nom", solution.getLiteral("nom").getString());
-                responseMap.put("specialite", solution.getLiteral("specialite").getString());
-                responseMap.put("localisation", solution.getLiteral("localisation").getString());
+
+                // Retrieve and check for the nom
+                if (solution.getLiteral("nom") != null) {
+                    responseMap.put("nom", solution.getLiteral("nom").getString());
+                } else {
+                    // Log the entire solution for debugging
+                    System.out.println("Solution without 'nom': " + solution);
+                    responseMap.put("nom", "Nom non disponible");
+                }
+
+                responseMap.put("specialite", solution.getLiteral("specialite") != null ?
+                        solution.getLiteral("specialite").getString() : "Spécialité non disponible");
+
+                responseMap.put("localisation", solution.getLiteral("localisation") != null ?
+                        solution.getLiteral("localisation").getString() : "Localisation non disponible");
             } else {
                 responseMap.put("message", "Aucun médecin trouvé avec ce nom.");
             }
@@ -166,6 +177,7 @@ public class MedecinServicesImp {
 
         return responseMap;
     }
+
+
+
 }
-
-
