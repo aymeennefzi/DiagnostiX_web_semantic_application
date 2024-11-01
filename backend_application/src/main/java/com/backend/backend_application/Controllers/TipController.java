@@ -17,7 +17,7 @@ public class TipController {
     @Autowired
     private TipService tipService;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Map<String, Object>> createTip(@RequestBody TipDTO tipDTO) {
         return tipService.addTip(tipDTO);
     }
