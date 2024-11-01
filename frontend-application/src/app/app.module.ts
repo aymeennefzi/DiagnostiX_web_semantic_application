@@ -23,7 +23,7 @@ import { PatientService } from './services/patient.service';
     SigninComponent,
     NotFoundComponent,
     VerifyAccoutComponent,
-    
+
   ],
   imports: [
     BrowserModule,

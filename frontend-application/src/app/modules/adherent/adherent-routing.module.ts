@@ -10,6 +10,7 @@ import { MedecinAddComponent } from './Views/medecin-add/medecin-add.component';
 import { MedecinEditComponent } from './Views/medecin-edit/medecin-edit.component';
 import { PatientComponent } from './patient/patient.component';
 import { SymptomComponent } from './Views/symptom/symptom.component';
+import { TipComponent } from './Views/Tip/tip/tip.component';
 
 const routes: Routes = [
   {
@@ -27,8 +28,8 @@ const routes: Routes = [
       {path: 'medecins', component: MedecinListComponent },
       {path: 'medecins/add', component: MedecinAddComponent},
       {path: 'medecin/update/:name', component: MedecinEditComponent},
-      {path: 'patients', component: PatientComponent,
-      },
+      {path: 'patients', component: PatientComponent},
+      {path: 'tips', component: TipComponent},
     ],
   },
 ];

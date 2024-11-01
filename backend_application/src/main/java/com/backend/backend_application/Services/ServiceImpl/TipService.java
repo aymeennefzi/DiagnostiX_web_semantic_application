@@ -58,7 +58,9 @@ public class TipService {
         String sparqlQuery = "PREFIX ont: <http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#> "
                 + "INSERT DATA { "
                 + "    ont:" + tipDTO.getCible().replace(" ", "_") + " a ont:Conseil ; "
-                + "    ont:aCible \"" + tipDTO.getCible() + "\" . "
+                + "    ont:aCible \"" + tipDTO.getCible() + "\" ; "
+                + "    ont:titre \"" + tipDTO.getTitre() + "\" ; "
+                + "    ont:description \"" + tipDTO.getDescription() + "\" . "
                 + "}";
 
         UpdateRequest request = UpdateFactory.create(sparqlQuery);
@@ -77,43 +79,79 @@ public class TipService {
         }
     }
 
-    public Map<String, Object> getTipByCible(String cible) {
+    public ResponseEntity<Map<String, Object>> updateTip(String cible, TipDTO tipDTO) {
+        Map<String, Object> response = new HashMap<>();
+
+        // Check if the tip with the given cible exists
+        if (getTipByCible(cible) == null) {
+            response.put("success", false);
+            response.put("message", "Conseil non trouvé pour la cible spécifiée.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+
+        // Prepare the SPARQL update query
         String sparqlQuery = "PREFIX ont: <http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#> "
-                + "SELECT ?cible WHERE { "
+                + "DELETE { "
                 + "    ?tip a ont:Conseil ; "
-                + "             ont:aCible \"" + cible + "\" . "
+                + "         ont:aCible ?oldCible ; "
+                + "         ont:description ?oldDescription . "
+                + "} "
+                + "INSERT { "
+                + "    ?tip a ont:Conseil ; "
+                + "         ont:aCible \"" + tipDTO.getCible() + "\" ; "
+                + "         ont:description \"" + tipDTO.getDescription() + "\" . "
+                + "} "
+                + "WHERE { "
+                + "    ?tip a ont:Conseil ; "
+                + "         ont:aCible \"" + cible + "\" ; "
+                + "         ont:description ?oldDescription . "
                 + "}";
 
-        Query query = QueryFactory.create(sparqlQuery);
-        try (QueryExecution qexec = QueryExecutionFactory.sparqlService(FUSEKI_URL, query)) {
-            ResultSet results = qexec.execSelect();
-            if (results.hasNext()) {
-                QuerySolution soln = results.nextSolution();
-                Map<String, Object> tipMap = new HashMap<>();
-                tipMap.put("cible", cible);
-                return tipMap;
-            }
+        UpdateRequest request = UpdateFactory.create(sparqlQuery);
+
+        try {
+            UpdateProcessor processor = UpdateExecutionFactory.createRemote(request, FUSEKI_URL);
+            processor.execute();
+
+            response.put("success", true);
+            response.put("message", "Le conseil a été mis à jour avec succès.");
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            e.printStackTrace();
+            response.put("success", false);
+            response.put("message", "Une erreur s'est produite lors de la mise à jour du conseil : " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
-        return null;
     }
 
-    public List<Map<String, String>> getAllTips() {
-        List<Map<String, String>> tips = new ArrayList<>();
+    public Map<String, Object> getTipByCible(String cible) {
+        List<Map<String, Object>> allTips = getAllTips();
+
+        return allTips.stream()
+                .filter(tip -> cible.equals(tip.get("cible")))
+                .findFirst()
+                .orElse(null);
+    }
+
+
+    public List<Map<String, Object>> getAllTips() {
+        List<Map<String, Object>> tips = new ArrayList<>();
 
         String queryString = "PREFIX ont: <http://www.semanticweb.org/omgboomrito1/ontologies/2024/8/untitled-ontology-12#> "
-                + "SELECT ?cible WHERE { "
+                + "SELECT ?cible ?titre ?description WHERE { "
                 + "    ?tip a ont:Conseil ; "
-                + "             ont:aCible ?cible . "
+                + "         ont:aCible ?cible ; "
+                + "         ont:titre ?titre ; "
+                + "         ont:description ?description . "
                 + "}";
 
         try (QueryExecution qexec = QueryExecutionFactory.sparqlService(FUSEKI_URL, queryString)) {
             ResultSet results = qexec.execSelect();
             while (results.hasNext()) {
                 QuerySolution soln = results.nextSolution();
-                Map<String, String> tipData = new HashMap<>();
+                Map<String, Object> tipData = new HashMap<>();
                 tipData.put("cible", soln.getLiteral("cible").getString());
+                tipData.put("titre", soln.getLiteral("titre").getString());
+                tipData.put("description", soln.getLiteral("description").getString());
                 tips.add(tipData);
             }
         } catch (Exception e) {
