@@ -9,6 +9,7 @@ import { MedecinListComponent } from './Views/medecin-list/medecin-list.componen
 import { MedecinAddComponent } from './Views/medecin-add/medecin-add.component';
 import { MedecinEditComponent } from './Views/medecin-edit/medecin-edit.component';
 import { PatientComponent } from './patient/patient.component';
+import { SymptomComponent } from './Views/symptom/symptom.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       {path: 'Liste-livre/DetailDisease/:name', component: DetailsDiseasesComponent },
       {path: 'Liste-livre',component: ListeLivreComponent},
       {path: 'patients',component: PatientComponent },
+      {path: 'symptome',component: SymptomComponent },
       {path: 'Liste-livre',component: ListeLivreComponent},
       {path: 'medecins', component: MedecinListComponent },
       {path: 'medecins/add', component: MedecinAddComponent},

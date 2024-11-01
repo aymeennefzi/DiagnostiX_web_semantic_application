@@ -12,9 +12,10 @@ import { PatientComponent } from './patient/patient.component';
 import { MedecinListComponent } from './Views/medecin-list/medecin-list.component';
 import { MedecinAddComponent } from './Views/medecin-add/medecin-add.component';
 import { MedecinEditComponent } from './Views/medecin-edit/medecin-edit.component';
+import { SymptomComponent } from './Views/symptom/symptom.component';
 
 @NgModule({
-  declarations: [ListeLivreComponent, AdherantLayoutComponent, AddDiseasesComponent, UpdateDiseasesComponent, DetailsDiseasesComponent , PatientComponent , MedecinListComponent, MedecinAddComponent, MedecinEditComponent],
+  declarations: [ListeLivreComponent, AdherantLayoutComponent, AddDiseasesComponent, UpdateDiseasesComponent, DetailsDiseasesComponent , PatientComponent , MedecinListComponent, MedecinAddComponent, MedecinEditComponent, SymptomComponent],
   imports: [CommonModule, AdherentRoutingModule , ReactiveFormsModule ,  FormsModule],
 })
 export class AdherentModule {}
