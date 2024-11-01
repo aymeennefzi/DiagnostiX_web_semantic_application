@@ -12,12 +12,17 @@ export class SymptomComponent implements OnInit {
   newSymptom: Symptom = { nom: '', description: '' };
   editedSymptom: Symptom | null = null;
   message: string = '';
-
+  isAddModalOpen: boolean = false; //
   constructor(private symptomService: SymptomService) {}
 
   ngOnInit(): void {
     this.getAllSymptoms();
   }
+  closeAddModal(): void {
+    // Code pour fermer le modal, par exemple, réinitialiser les champs ou masquer le modal
+    this.newSymptom = { nom: '', description: '' }; // Réinitialiser les valeurs
+  }
+  
 
   getAllSymptoms(): void {
     this.symptomService.getSymptoms().subscribe({
