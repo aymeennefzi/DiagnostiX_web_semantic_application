@@ -52,4 +52,8 @@ public class DiseaseController {
             return ResponseEntity.status(404).body(Map.of("message", "Disease not found"));
         }
     }
+    @GetMapping("/disease/check/{diseaseName}")
+    public Map<String, Object> checkDiseaseNameUnique(@PathVariable String diseaseName) {
+        return diseaseService.isDiseaseNameUnique(diseaseName);
+    }
 }

@@ -1,5 +1,6 @@
 package com.backend.backend_application.Controllers;
 
+import DTO.SymptomeDto;
 import com.backend.backend_application.Services.ServiceImpl.SymptomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ public class SymptomController {
     }
 
     @PostMapping("/addSymptom")
-    public ResponseEntity<Map<String, Object>> addSymptom(@RequestBody DTO.SymptomeDto symptomDTO) {
+    public ResponseEntity<Map<String, Object>> addSymptom(@RequestBody SymptomeDto symptomDTO) {
         return symptomService.addSymptom(symptomDTO);
     }
 
@@ -39,4 +40,16 @@ public class SymptomController {
     public List<Map<String, String>> getAllSymptoms() {
         return symptomService.getAllSymptoms();
     }
+
+    @PutMapping("/updateSymptom/{currentName}")
+    public ResponseEntity<Map<String, Object>> updateSymptom(
+            @PathVariable String currentName,
+            @RequestBody SymptomeDto symptomDTO) {
+        return symptomService.updateSymptom(currentName, symptomDTO);
+    }
+    @DeleteMapping("/deleteAllSymptoms")
+    public ResponseEntity<Map<String, Object>> deleteAllSymptoms() {
+        return symptomService.deleteAllSymptoms();
+    }
+
 }

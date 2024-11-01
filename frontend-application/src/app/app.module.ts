@@ -12,6 +12,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './home/not-found/not-found.component';
 import { VerifyAccoutComponent } from './home/verify-accout/verify-accout.component';
 import { CodeInputModule } from 'angular-code-input';
+import { AllergiesComponent } from './allergies/allergies.component';
+import { PatientService } from './services/patient.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +24,8 @@ import { CodeInputModule } from 'angular-code-input';
     SigninComponent,
     NotFoundComponent,
     VerifyAccoutComponent,
+    AllergiesComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,7 @@ import { CodeInputModule } from 'angular-code-input';
     BrowserAnimationsModule,
     CodeInputModule,
   ],
-  providers: [],
+  providers: [PatientService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

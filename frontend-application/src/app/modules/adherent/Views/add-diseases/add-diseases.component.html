@@ -1,0 +1,62 @@
+<section class="pt-4 pt-md-5"> 
+    <!-- Button Retour -->
+    <div class="mb-3">
+        <a class="btn btn-danger custom-btn" routerLink="/adherent/Liste-livre">
+            Retour à la liste
+        </a>
+    </div>
+    <div class="container">
+        <!-- Content and form START -->
+        <div class="row g-4 justify-content-center align-items-center">
+            <div class="col-lg-6">
+                <!-- Title -->
+                <h5>Ajouter une maladie</h5>
+                <form [formGroup]="diseaseForm" (ngSubmit)="onSubmit()" class="mt-4">
+                    <!-- Nom de la maladie -->
+                    <div class="mb-4 form-control-bg-light">
+                        <label class="form-label">Nom de la maladie</label>
+                        <input type="text" class="form-control" formControlName="name" />
+                        <div *ngIf="diseaseForm.get('name')?.invalid && diseaseForm.get('name')?.touched">
+                            <small class="text-danger">Le nom de la maladie est requis.</small>
+                        </div>
+                    </div>
+                    <!-- Description de la maladie -->
+                    <div class="mb-4 form-control-bg-light">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="4" formControlName="description"></textarea>
+                        <div *ngIf="diseaseForm.get('description')?.invalid && diseaseForm.get('description')?.touched">
+                            <small class="text-danger">La description est requise.</small>
+                        </div>
+                    </div>
+                    <!-- Symptômes -->
+                    <div class="mb-4 form-control-bg-light">
+                        <label class="form-label">Symptômes</label>
+                        <input type="text" class="form-control" formControlName="symptoms" placeholder="Symptôme 1, Symptôme 2, ..." />
+                        <div *ngIf="diseaseForm.get('symptoms')?.invalid && diseaseForm.get('symptoms')?.touched">
+                            <small class="text-danger">Les symptômes sont requis.</small>
+                        </div>
+                    </div>
+                    <!-- Traitements -->
+                    <div class="mb-4 form-control-bg-light">
+                        <label class="form-label">Traitements</label>
+                        <input type="text" class="form-control" formControlName="treatments" placeholder="Traitement 1, Traitement 2, ..." />
+                        <div *ngIf="diseaseForm.get('treatments')?.invalid && diseaseForm.get('treatments')?.touched">
+                            <small class="text-danger">Les traitements sont requis.</small>
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit" [disabled]="diseaseForm.invalid">
+                            Ajouter Maladie
+                        </button>
+                    </div>
+                </form>             
+            </div>
+            <!-- Image -->
+            <div class="col-lg-6 col-xl-5 text-center text-lg-end position-relative ms-auto">
+                <img src="assets/images/Medicine.png" class="rounded-3 w-100 position-relative" alt="Image de la maladie" />
+            </div>
+        </div>
+        <!-- Content and form END -->       
+    </div>
+</section>
