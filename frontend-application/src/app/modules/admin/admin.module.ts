@@ -7,11 +7,14 @@ import { ListeAdherentComponent } from './Views/liste-adherent/liste-adherent.co
 import { ListeTotaleLivreComponent } from './Views/liste-totale-livre/liste-totale-livre.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AdminLayoutComponent,
     ListeAdherentComponent,
     ListeTotaleLivreComponent,
+   
   ],
   imports: [CommonModule, AdminRoutingModule],
 })

@@ -4,6 +4,7 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { ListeAdherentComponent } from './Views/liste-adherent/liste-adherent.component';
 import { ListeTotaleLivreComponent } from './Views/liste-totale-livre/liste-totale-livre.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -16,7 +17,7 @@ const routes: Routes = [
       {
         path: 'liste-totale-livre',
         component: ListeTotaleLivreComponent,
-      },
+      }
     ],
   },
 ];
