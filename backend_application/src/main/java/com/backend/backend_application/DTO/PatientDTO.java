@@ -1,13 +1,18 @@
 package com.backend.backend_application.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.io.Serializable;
 import java.util.List;
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
-public class PatientDTO {
+
+
+public class PatientDTO implements Serializable {
     private String nom;
     private int age;
     private String sexe;
