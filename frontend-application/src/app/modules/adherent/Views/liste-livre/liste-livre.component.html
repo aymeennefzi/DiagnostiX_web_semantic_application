@@ -1,1 +1,75 @@
-<p>liste-livre works!</p>
+<div class="d-flex justify-content-end mb-3">
+  <button class="btn btn-primary" (click)="addDisease()">Add disease</button>
+</div>
+<div class="card shadow mt-5">
+ 
+
+  <div class="card-body">
+   <!-- Conteneur du bouton en haut à droite et barre de recherche -->
+   <div class="d-flex justify-content-between mb-3">
+    <input 
+        type="text" 
+        class="form-control me-2" 
+        placeholder="Rechercher une maladie..." 
+        [(ngModel)]="filter" 
+        (input)="filterDiseases()"
+      >
+  </div>
+
+    <!-- Titre des colonnes -->
+    <div class="bg-light rounded p-3 d-none d-lg-block mt-2">
+      <div class="row row-cols-5 g-5">
+        <div class="col"><h6 class="mb-0">Nom</h6></div>
+        <div class="col"><h6 class="mb-0">Symptômes</h6></div>
+        <div class="col"><h6 class="mb-0">Description</h6></div>
+        <div class="col"><h6 class="mb-0">Traitements</h6></div>
+        <div class="col"><h6 class="mb-0">Actions</h6></div>
+      </div>
+    </div>
+
+    <!-- Liste des maladies -->
+    <div *ngFor="let disease of filteredDiseases" class="row row-cols-5 align-items-center border-bottom g-4 px-2 py-4">
+      <div class="col">
+        <small class="d-block d-lg-none">Nom:</small>
+        <h6 class="mb-0 fw-normal">{{ disease.name }}</h6>
+      </div>
+
+      <div class="col">
+        <small class="d-block d-lg-none">Symptômes:</small>
+        <h6 class="mb-0 fw-normal">{{ disease.symptoms }}</h6>
+      </div>
+
+      <div class="col">
+        <small class="d-block d-lg-none">Description:</small>
+        <h6 class="mb-0 fw-normal">{{ disease.description }}</h6>
+      </div>
+
+      <div class="col">
+        <small class="d-block d-lg-none">Traitements:</small>
+        <h6 class="mb-0 fw-normal">{{ disease.treatments }}</h6>
+      </div>
+
+      <div class="col">
+        <div class="d-flex flex-column flex-md-row gap-1">
+          <a (click)="goToDetailDisease(disease.name)" class="btn btn-info-soft btn-round" 
+             data-bs-toggle="tooltip" data-bs-placement="top" title="Voir les détails">
+            <i class="bi bi-eye"></i>
+          </a>
+          <a (click)="goToUpdateDisease(disease.name)" class="btn btn-success-soft btn-round">
+            <i class="bi bi-pencil-square"></i>
+        </a>
+          <button 
+            class="btn btn-danger-soft btn-round" 
+            data-bs-toggle="tooltip" data-bs-placement="top" 
+            title="Delete" 
+            (click)="deleteDisease(disease.name)">
+            <i class="bi bi-trash"></i>
+          </button>
+          <a (click)="CheckDisease(disease.name)" class="btn btn-success-soft btn-round">
+            <i class="bi bi-check-circle"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
