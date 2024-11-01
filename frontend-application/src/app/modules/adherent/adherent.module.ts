@@ -8,9 +8,10 @@ import { AddDiseasesComponent } from './Views/add-diseases/add-diseases.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateDiseasesComponent } from './Views/update-diseases/update-diseases.component';
 import { DetailsDiseasesComponent } from './Views/details-diseases/details-diseases.component';
+import { PatientComponent } from './patient/patient.component';
 
 @NgModule({
-  declarations: [ListeLivreComponent, AdherantLayoutComponent, AddDiseasesComponent, UpdateDiseasesComponent, DetailsDiseasesComponent],
+  declarations: [ListeLivreComponent, AdherantLayoutComponent, AddDiseasesComponent, UpdateDiseasesComponent, DetailsDiseasesComponent , PatientComponent],
   imports: [CommonModule, AdherentRoutingModule , ReactiveFormsModule ,  FormsModule],
 })
 export class AdherentModule {}

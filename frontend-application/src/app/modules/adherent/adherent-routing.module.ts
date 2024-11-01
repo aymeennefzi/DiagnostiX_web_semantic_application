@@ -5,6 +5,7 @@ import { ListeLivreComponent } from './Views/liste-livre/liste-livre.component';
 import { AddDiseasesComponent } from './Views/add-diseases/add-diseases.component';
 import { UpdateDiseasesComponent } from './Views/update-diseases/update-diseases.component';
 import { DetailsDiseasesComponent } from './Views/details-diseases/details-diseases.component';
+import { PatientComponent } from './patient/patient.component';
 
 const routes: Routes = [
   {
@@ -15,9 +16,9 @@ const routes: Routes = [
       {path: 'Liste-livre/addDisease',component: AddDiseasesComponent},
       { path: 'Liste-livre/UpdateDisease/:name', component: UpdateDiseasesComponent },
       { path: 'Liste-livre/DetailDisease/:name', component: DetailsDiseasesComponent },
-
+      {path: 'Liste-livre',component: ListeLivreComponent},
+      {path: 'patients',component: PatientComponent }
     ],
-
   },
 ];
 
