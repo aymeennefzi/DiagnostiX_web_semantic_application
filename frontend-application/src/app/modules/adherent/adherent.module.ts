@@ -8,9 +8,10 @@ import { MedecinListComponent } from './Views/medecin-list/medecin-list.componen
 import { MedecinAddComponent } from './Views/medecin-add/medecin-add.component';
 import { FormsModule } from '@angular/forms';
 import { MedecinEditComponent } from './Views/medecin-edit/medecin-edit.component';
+import { PatientComponent } from './patient/patient.component';
 
 @NgModule({
-  declarations: [ListeLivreComponent, AdherantLayoutComponent, MedecinListComponent, MedecinAddComponent, MedecinEditComponent],
+  declarations: [ListeLivreComponent, AdherantLayoutComponent, MedecinListComponent, MedecinAddComponent, MedecinEditComponent,PatientComponent],
   imports: [CommonModule, AdherentRoutingModule,FormsModule],
 })
 export class AdherentModule {}

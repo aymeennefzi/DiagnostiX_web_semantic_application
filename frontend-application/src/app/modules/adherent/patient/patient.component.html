@@ -1,0 +1,146 @@
+<!-- Display All Patients -->
+<div class="container mt-4">
+  <div *ngIf="patients.length">
+    <h3>All Patients</h3>
+    <ul class="list-group">
+      <li *ngFor="let patient of patients" class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ patient.nom }}</strong> - {{ patient.age }} years - {{ patient.sexe }} - {{ patient.poids }} - {{ patient.historiqueMedical }} - {{ patient.niveauDouleur }} 
+        </div>
+        <div>
+          <button class="btn btn-info btn-sm" (click)="getPatientInfo(patient.nom)">View</button>
+          <button class="btn btn-warning btn-sm" (click)="openUpdateModal(patient.nom)">Update</button>
+          <button class="btn btn-danger btn-sm" (click)="deletePatient(patient.nom)">Delete</button>
+        </div>
+      </li>
+    </ul>
+    <button class="btn btn-success mt-3" (click)="openAddModal()">Add Patient</button>
+  </div>
+  <div *ngIf="!patients.length">
+    <h4>No patients available.</h4>
+  </div>
+</div>
+
+<!-- Modal for Patient Details -->
+<!-- Modal for Patient Details -->
+<div *ngIf="showDetailsModal" class="modal fade show d-block" tabindex="-1" role="dialog" style="background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Patient Details</h5>
+        <button type="button" class="close" (click)="closeDetailsModal()">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Name:</strong> {{ selectedPatient?.nom }}</p>
+        <p><strong>Age:</strong> {{ selectedPatient?.age }}</p>
+        <p><strong>Sexe:</strong> {{ selectedPatient?.sexe }}</p>
+        <p><strong>Poids:</strong> {{ selectedPatient?.poids }} kg</p>
+        <p><strong>Historique Médical:</strong> {{ selectedPatient?.historiqueMedical?.join(', ') }}</p>
+        <p><strong>Niveau Douleur:</strong> {{ selectedPatient?.niveauDouleur }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeDetailsModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Add Patient -->
+<div *ngIf="showAddModal" class="modal fade show d-block" tabindex="-1" role="dialog" style="background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Patient</h5>
+        <button type="button" class="close" (click)="closeAddModal()">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="addPatient()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter patient's name" [(ngModel)]="patient.nom" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" class="form-control" placeholder="Enter patient's age" [(ngModel)]="patient.age" name="age" required>
+          </div>
+          <div class="form-group">
+            <label for="sexe">Sexe</label>
+            <input type="text" id="sexe" class="form-control" placeholder="Enter patient's sexe" [(ngModel)]="patient.sexe" name="sexe" required>
+          </div>
+          <div class="form-group">
+            <label for="poids">Poids (kg)</label>
+            <input type="number" id="poids" class="form-control" placeholder="Enter patient's poids" [(ngModel)]="patient.poids" name="poids" required>
+          </div>
+<div class="form-group">
+  <label for="historiqueMedical">Historique Médical</label>
+  <textarea id="historiqueMedical" class="form-control" placeholder="Enter patient's historique médicale (comma separated)" 
+            [(ngModel)]="historiqueMedicalInput" (ngModelChange)="updateHistoriqueMedical()" name="historiqueMedical" required></textarea>
+</div>
+<div class="form-group">
+  <label for="antecedentsMedicaux">Antécédents Médicaux</label>
+  <textarea id="antecedentsMedicaux" class="form-control" placeholder="Enter patient's antecedents médicaux (comma separated)" 
+            [(ngModel)]="antecedentsMedicauxInput" (ngModelChange)="updateAntecedentsMedicaux()" name="antecedentsMedicaux" required></textarea>
+</div>
+
+          <div class="form-group">
+            <label for="niveauDouleur">Niveau de Douleur</label>
+            <input type="number" id="niveauDouleur" class="form-control" placeholder="Enter patient's niveau de douleur (0-10)" [(ngModel)]="patient.niveauDouleur" name="niveauDouleur" required>
+          </div>
+          <div class="form-group">
+            <label for="dateDiagnostic">Date Diagnostic</label>
+            <input type="date" id="dateDiagnostic" class="form-control" [(ngModel)]="patient.dateDiagnostic" name="dateDiagnostic" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Patient</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Update Patient -->
+<div *ngIf="showUpdateModal" class="modal fade show d-block" tabindex="-1" role="dialog" style="background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Patient</h5>
+        <button type="button" class="close" (click)="closeUpdateModal()">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="saveUpdatedPatient()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" [(ngModel)]="patient.nom" name="name" disabled required>
+          </div>
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" class="form-control" [(ngModel)]="patient.age" name="age" required>
+          </div>
+          <div class="form-group">
+            <label for="sexe">Sexe</label>
+            <input type="text" id="sexe" class="form-control" [(ngModel)]="patient.sexe" name="sexe" required>
+          </div>
+          <div class="form-group">
+            <label for="poids">Poids (kg)</label>
+            <input type="number" id="poids" class="form-control" [(ngModel)]="patient.poids" name="poids" required>
+          </div>
+          <div class="form-group">
+            <label for="historiqueMedical">Historique Médical (cm)</label>
+            <input type="number" id="historiqueMedical" class="form-control" [(ngModel)]="patient.historiqueMedical" name="historiqueMedical" required>
+          </div>
+          <div class="form-group">
+            <label for="niveauDouleur">Blood Pressure</label>
+            <input type="text" id="niveauDouleur" class="form-control" [(ngModel)]="patient.niveauDouleur" name="niveauDouleur" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Update Patient</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

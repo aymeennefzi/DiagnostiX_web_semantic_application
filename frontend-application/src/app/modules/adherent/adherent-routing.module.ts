@@ -5,6 +5,7 @@ import { ListeLivreComponent } from './Views/liste-livre/liste-livre.component';
 import { MedecinListComponent } from './Views/medecin-list/medecin-list.component';
 import { MedecinAddComponent } from './Views/medecin-add/medecin-add.component';
 import { MedecinEditComponent } from './Views/medecin-edit/medecin-edit.component';
+import { PatientComponent } from './patient/patient.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
       { path: 'medecins/add', component: MedecinAddComponent},
       { path: 'medecin/update/:name', component: MedecinEditComponent},
 
+      {
+        path: 'patients', // Define the path for PatientComponent
+        component: PatientComponent, // Add the PatientComponent
+      },
     ],
   },
 ];
