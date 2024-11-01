@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <h2 class="text-center">Allergy Management</h2>
+  
+    <!-- Form for adding/updating allergies -->
+    <form [formGroup]="allergyForm" (ngSubmit)="isEditMode ? updateAllergy() : addAllergy()" class="mb-4">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input id="name" formControlName="name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="severityLevel" class="form-label">Severity Level:</label>
+        <input id="severityLevel" formControlName="severityLevel" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="lastOccurrence" class="form-label">Last Occurrence:</label>
+        <input id="lastOccurrence" type="date" formControlName="lastOccurrence" class="form-control" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary me-2" [disabled]="!allergyForm.valid">
+        {{ isEditMode ? 'Update Allergy' : 'Add Allergy' }}
+      </button>
+      <button type="button" class="btn btn-secondary" *ngIf="isEditMode" (click)="cancelEdit()">Cancel</button>
+    </form>
+  
+    <!-- List of allergies -->
+    <h3>Allergies</h3>
+    <ul class="list-group">
+      <li *ngFor="let allergy of allergies" class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ allergy.name }}</strong> - {{ allergy.severityLevel }} 
+          <span class="text-muted">(Last Occurrence: {{ allergy.lastOccurrence }})</span>
+        </div>
+        <div>
+          <button class="btn btn-sm btn-outline-primary me-2" (click)="editAllergy(allergy)">Edit</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteAllergy(allergy.name)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
